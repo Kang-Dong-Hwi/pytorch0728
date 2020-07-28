@@ -394,7 +394,7 @@ Adam에서 learning rate가 큰 값에서 초기값을 적용해준 효과가 �
 learning rate가 10e-6보다 작은 경우 loss값이 오히려 높아지는 결과가 나왔습니다.<br>
 <br>
 learning rate = 2*10e-5에서 loss값이 작게 측정되어
-<br>Adam, lr = 2'*'10e-5로 학습을 진행해보았습니다.
+<br>Adam, lr = 2**10e-5로 학습을 진행해보았습니다.
 
 
 <br>
