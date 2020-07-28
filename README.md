@@ -186,7 +186,6 @@ for epoch in range(EPOCHS):
 
 optimizer가 Adagrad이고  
 epoch 50, batch 50으로하여 총 4 실행한 결과 입니다.  
-<br>
 training dataset에서 대부분의 예측값이 
 학습의 첫 예측값과 같은 값이 되었고
 <br>
