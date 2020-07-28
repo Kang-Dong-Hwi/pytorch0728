@@ -41,12 +41,14 @@ def Phase_normalization( phase ):
 ### model 학습
 ----
 
-training dataset을 model에 적용하여 학습하는 코드입니다.
-loss, accuracy를 표시하는 코드 외에 필요한 것만 남긴 부분입니다.
+training dataset을 model에 적용하여 신경망 학습을 하는 코드입니다.<br><br>
+
+(https://tutorials.pytorch.kr/beginner/blitz/cifar10_tutorial.html  <br>
+pytorch예제인 cifar10 분류를 참고했습니다.)
+<br><br>
+(아래코드는 loss, accuracy를 출력하는 등 불필요한 부분을 제외한 일부입니다.)
 
 ~~~python
-# cifar10 코드 참고하였습니다.
-
 torch.manual_seed(100)
 criterion = nn.CrossEntropyLoss().to('cuda')
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
@@ -74,7 +76,7 @@ for epoch in range(EPOCHS):
     
 <br><br>    
         
-전체코드입니다.
+(전체코드입니다.)
 ~~~python
 
 torch.manual_seed(100)
@@ -122,6 +124,8 @@ for epoch in range(EPOCHS):
         loss.backward()
         optimizer.step()
         
+
+
 
         """loss, accuracy"""
         # batch 정확도
@@ -180,11 +184,13 @@ for epoch in range(EPOCHS):
 </table>
 
 
-Adagrad를 optim로  
-epoch 50, batch 50으로 실행한 결과 입니다.  
-
-training dataset, validation dataset에서 모두 처음 예측값으로만  
-
+optimizer가 Adagrad이고  
+epoch 50, batch 50으로하여 총 4 실행한 결과 입니다.  
+<br>
+training dataset에서 대부분의 예측값이 
+학습의 첫 예측값과 같은 값이 되었고
+<br>
+validation dataset에서도 training dataset과 같은 결과가 나왔습니다.
 
 
 <br>
@@ -193,8 +199,9 @@ training dataset, validation dataset에서 모두 처음 예측값으로만
 
 ### 2. xavier_uniform, kaiming_uniform
 -------
-xavier_uniform
-kaiming_uniform
+예측값이 특정값에만 몰리기 떄문에 가중치 초기화를 위해서<br>  
+convolution 에 xavier_uniform,
+relu에 kaiming_uniform 초기 함수를 사용했습니다.
 <br>
 
 ~~~python
@@ -285,9 +292,11 @@ class CNN (nn.Module):
 
 </table>
 
-convolution층 사이에는 xavier_uniform  
-linear층 사이에는 kaiming_uniform 추가
-
+optimizer가 Adagrad일 때 (lr=10e-5, weight_decay=0.9) 결과입니다.
+<br>
+xavier, kaiming 초기값을 사용하기 전보다 training dataset에서 예측값이 여러 값으로 분포되었지만
+<br>
+loss값이 더 낮아지거나 validation dataset에서 정확도가 높아지지는 않았습니다.
 
 
 <br>
@@ -381,10 +390,11 @@ linear층 사이에는 kaiming_uniform 추가
 </table>
 
 
-Adam에서 lr이 큰 값에서 변수??초기화 효과?? 가 없었습니다.  
-lr이 10e-6보다 작을 때 loss값이 오히려 높아지는 결과가 나왔습니다.
-learning rate를 다양하게 해서 돌렸을V?? 때  
-2*10e-5에서 loss값이 작게 측정되었습니다.
+Adam에서 learning rate가 큰 값에서 초기값을 적용해준 효과가 없었고<br>
+learning rate가 10e-6보다 작은 경우 loss값이 오히려 높아지는 결과가 나왔습니다.<br>
+<br>
+learning rate = 2*10e-5에서 loss값이 작게 측정되어
+<br>Adam, lr = 2*10e-5로 학습을 진행해보았습니다.
 
 
 <br>
@@ -433,4 +443,8 @@ learning rate를 다양하게 해서 돌렸을V?? 때
 
 </table>
 
+
+
+epoch=200으로 하여 학습했을때 정확도가 97% 정도로 측정되었지만<br>
+overfitting이 심하게 일어나서 validation dataset에서 정확도가 11%로 epoch가 50일 때와 같은 값이 나왔습니다.
 
