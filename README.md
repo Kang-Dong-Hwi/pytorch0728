@@ -5,11 +5,11 @@
 ### mag, phase nomalization
 -------
 <br>
-(257, 382) size의  numpy array 2개를  위아래로 붙인 뒤  ( 257*2, 382 ) size로 만들어 주고  <br>
-( 257 * 2 * 382 )개의 sample에 대한 평균, 표준편차로 정규화해주었습니다.  <br>
-정규화된 numpy array (z) 의 shape을 (2, 257, 382)로 바꿔주었고 <br>
-반환값은 tuple type으로 <br>
-z[0]은 정규화된 left magnitude, z[1]은 정규화된 right magnitude 입니다.  
+(257, 382) size의  numpy array 2개를  위아래로 붙인 뒤  ( 257*2, 382 ) size로 만들어 주고  <br><br>
+( 257 * 2 * 382 )개의 sample에 대한 평균, 표준편차로 정규화해주었습니다.  <br><br>
+정규화된 numpy array (z) 의 shape을 (2, 257, 382)로 바꿔주었고 <br><br>
+반환값은 tuple type으로 <br><br>
+z[0]은 정규화된 left magnitude, z[1]은 정규화된 right magnitude 입니다.<br>  
 
 ~~~python
 def Mag_normalization( L, R ):
