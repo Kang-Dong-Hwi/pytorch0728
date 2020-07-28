@@ -1,18 +1,14 @@
 # pytorch0728
 
 
--------
 
 ### mag, phase nomalization
-
+-------
 <br>
-(257, 382) size의  numpy array 2개를  
-위아래로 붙인 뒤  ( 257*2, 382 ) size로 만들어 주고  
-
-( 257 * 2 * 382 )개의 sample에 대한 평균, 표준편차로  
-정규화해주었습니다.  
-  
-정규화된 numpy array (z) 의 shape을 (2, 257, 382)로 바꿔주고  
+(257, 382) size의  numpy array 2개를  위아래로 붙인 뒤  ( 257*2, 382 ) size로 만들어 주고  
+( 257 * 2 * 382 )개의 sample에 대한 평균, 표준편차로 정규화해주었습니다.  
+ 
+정규화된 numpy array (z) 의 shape을 (2, 257, 382)로 바꿔주고 
 반환값은 tuple type으로 z[0]은 정규화된 left magnitude  
                        z[1]은 정규화된 right magnitude 입니다.  
 
@@ -200,7 +196,9 @@ training dataset, validation dataset에서 모두 처음 예측값으로만
 <br>
 
 ### 2. xavier_uniform, kaiming_uniform
-
+-------
+xavier_uniform
+kaiming_uniform
 <br>
 
 ~~~python
@@ -271,6 +269,8 @@ class CNN (nn.Module):
         return output
 ~~~
 -----------
+<br><br>
+
 <table>
   <tr>
         <td>training dataset</td>
